@@ -14,7 +14,7 @@ int main() {
 
     int max_x, max_y, direction = 0;
     direction = rand() % 4; // Randomizing the initial direction of the snake
-    Coordinate snake[100]; // Arbitrary max size
+    Coordinate snake[200]; // Arbitrary max size
     Coordinate trophy;
     trophy_timer = rand() % 9;
     start_color();
