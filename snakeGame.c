@@ -25,38 +25,11 @@ int main() {
     getmaxyx(stdscr, max_y, max_x);
 
     // Initialize snake in the center
-    switch (direction) {
-        case 0: // Starting the snake up
-            for (int i = 0; i < snake_length; i++) {
-                snake[i].x = max_x / 2;
-                snake[i].y = max_y / 2 + i;
-            }
-            break;
-        case 1: // Starting the snake down
-            for (int i = 0; i < snake_length; i++) {
-                snake[i].x = max_x / 2;
-                snake[i].y = max_y / 2 - i;
-            }
-            break;
-        case 2: // Starting the snake left
-            for (int i = 0; i < snake_length; i++) {
-                snake[i].x = max_x / 2 + i;
-                snake[i].y = max_y / 2;
-            }
-            break;
-        case 3: // Starting the snake right
-            for (int i = 0; i < snake_length; i++) {
-                snake[i].x = max_x / 2 - i;
-                snake[i].y = max_y / 2;
-            }
-            break;   
-    }
+    initialize_snake(direction, snake, max_x, max_y);
 
     // Initialize trophy in a random location
-    trophy.x = (rand() % (max_x - 2)) + 1;
-    trophy.y = (rand() % (max_y - 2)) + 1;
-    trophy_value = rand() % 9 + 1;    //Setting the random generator to get the value of the trophy
-    shape = trophy_shape(trophy_value);
+    initialize_trophy(trophy, max_x, max_y);
+    
     //Checking to make sure the initial trophy does not spawn on snake head
     while (trophy.x == snake[0].x && trophy.y == snake[0].y) {
         trophy.x = (rand() % (max_x - 2)) + 1;

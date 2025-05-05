@@ -101,8 +101,14 @@ int check_for_win(int snake_length, int max_x, int max_y) {
 
 // Draw the snake
 void draw_snake(Coordinate *snake, int length, int direction) {
+    start_color();
+
+    init_pair(1, COLOR_GREEN, COLOR_BLACK);
+    init_pair(2, COLOR_YELLOW, COLOR_GREEN);
+
     for (int i = 0; i < length; i++) {
         if (i == 0) {
+            attron(COLOR_PAIR(1));
             if (direction == UP)
                 mvprintw(snake[0].y, snake[0].x, "V");
             else if (direction == DOWN)
@@ -111,8 +117,11 @@ void draw_snake(Coordinate *snake, int length, int direction) {
                 mvprintw(snake[0].y, snake[0].x, ">");
             else if (direction == RIGHT)
                 mvprintw(snake[0].y, snake[0].x, "<");
+            attroff(COLOR_PAIR(1));
         } else {
+            attron(COLOR_PAIR(1));
             mvprintw(snake[i].y, snake[i].x, "O");
+            attroff(COLOR_PAIR(1));
         }
     }
 }
@@ -170,4 +179,42 @@ int handle_win(int snake_length, int max_x, int max_y) {
         return 1;
     }
     return 0;
+}
+
+// Initializing snake
+void initialize_snake(int direction, Coordinate *snake, int max_x, int max_y) {
+switch (direction) {
+        case 0: // Starting the snake up
+            for (int i = 0; i < snake_length; i++) {
+                snake[i].x = max_x / 2;
+                snake[i].y = max_y / 2 + i;
+            }
+            break;
+        case 1: // Starting the snake down
+            for (int i = 0; i < snake_length; i++) {
+                snake[i].x = max_x / 2;
+                snake[i].y = max_y / 2 - i;
+            }
+            break;
+        case 2: // Starting the snake left
+            for (int i = 0; i < snake_length; i++) {
+                snake[i].x = max_x / 2 + i;
+                snake[i].y = max_y / 2;
+            }
+            break;
+        case 3: // Starting the snake right
+            for (int i = 0; i < snake_length; i++) {
+                snake[i].x = max_x / 2 - i;
+                snake[i].y = max_y / 2;
+            }
+            break;   
+    }
+}
+
+// Initialize trophy
+void initialize_trophy(Coordinate trophy, int max_x, int max_y){
+    trophy.x = (rand() % (max_x - 2)) + 1;
+    trophy.y = (rand() % (max_y - 2)) + 1;
+    trophy_value = rand() % 9 + 1;    //Setting the random generator to get the value of the trophy
+    shape = trophy_shape(trophy_value);
 }
