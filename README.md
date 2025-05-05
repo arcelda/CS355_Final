@@ -19,3 +19,7 @@ also starts off pointing and moving in a random direction (Up, down, left, right
 For example, if the snake is going left, clicking right will automatically end
 the game. The only legitimate moves you can make if your snake is going left,
 are to continue going left, going up, or going down.
+
+// Win Condition
+1. Collect enough coins so that the length of the snake is equal to half of the
+screens perimeter!
