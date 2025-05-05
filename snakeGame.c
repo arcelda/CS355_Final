@@ -22,6 +22,9 @@ int main() {
     // Initialize game environment
     init_game();
 
+    // Load start screen
+    show_start_screen();  // Show rules before gameplay
+
     // Get terminal dimensions
     getmaxyx(stdscr, max_y, max_x);
 

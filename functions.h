@@ -37,5 +37,6 @@ int check_loss(Coordinate *snake, int max_x, int max_y);
 int handle_win(int snake_length, int max_x, int max_y);
 void initialize_snake(int direction, Coordinate *snake, int max_x, int max_y);
 void initialize_trophy(Coordinate trophy, int max_x, int max_y);
+void show_start_screen();
 
 #endif

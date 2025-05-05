@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <unistd.h>
 #include "functions.h"
@@ -217,3 +218,32 @@ void initialize_trophy(Coordinate trophy, int max_x, int max_y){
     trophy_value = rand() % 9 + 1;    //Setting the random generator to get the value of the trophy
     shape = trophy_shape(trophy_value);
 }
+
+// Welcome Screen
+void show_start_screen() {
+    clear();
+    int max_y, max_x;
+    getmaxyx(stdscr, max_y, max_x);
+
+    char *title = "WELCOME TO TERMINAL SNAKE!";
+    char *instructions[] = {
+        "Use the arrow keys to move the snake.",
+        "Collect trophies (numbers) to grow.",
+        "Avoid the walls and yourself.",
+        "Trophies disappear if not collected in time.",
+        "Don't try to reverse direction!",
+        "",
+        "Press any key to start and once the game starts press 'Q' to quit"
+    };
+
+    mvprintw(max_y / 2 - 4, (max_x - strlen(title)) / 2, "%s", title);
+    for (int i = 0; i < sizeof(instructions)/sizeof(instructions[0]); i++) {
+        mvprintw(max_y / 2 - 2 + i, (max_x - strlen(instructions[i])) / 2, "%s", instructions[i]);
+    }
+
+    refresh();
+    nodelay(stdscr, FALSE); // Wait for key press
+    getch();
+    nodelay(stdscr, TRUE);  // Resume non-blocking input
+}
+
