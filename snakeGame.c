@@ -17,6 +17,7 @@ int main() {
     Coordinate snake[100]; // Arbitrary max size
     Coordinate trophy;
     trophy_timer = rand() % 9;
+    start_color();
 
     // Initialize game environment
     init_game();
@@ -44,6 +45,13 @@ int main() {
         // Capture user input
         nodelay(stdscr, TRUE);
         int ch = getch();
+        if (ch == 'q' || ch == 'Q') {
+            endwin();
+            printf("==========================================\n");
+            printf("Aww, you quit?! Hope to see you next time!\n");
+            printf("==========================================\n");
+            return 0;
+        }
         // Changing direction and if trying to reverse, ends game
         int new_direction = update_direction(direction, ch);
         if (new_direction == -1) {
@@ -72,8 +80,11 @@ int main() {
         // Draw the snake
         draw_snake(snake, snake_length, direction);
 
-        // Draw the trohpy
+        // Draw the trophy
+        init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+        attron(COLOR_PAIR(2));
         mvprintw(trophy.y, trophy.x, "%c", shape);
+        attroff(COLOR_PAIR(2));
 
         refresh();
         if (direction == UP || direction == DOWN) {

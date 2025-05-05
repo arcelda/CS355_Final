@@ -12,6 +12,8 @@ To run the game:
 Be advised that the snake begins in the center of the terminal. The snake
 also starts off pointing and moving in a random direction (Up, down, left, right)
 
+You can also quit the game by pressing the 'q' key
+
 // Losing Conditions
 1. Collide with the wall
 2. Collide with any part of the snake itself

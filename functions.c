@@ -104,7 +104,6 @@ void draw_snake(Coordinate *snake, int length, int direction) {
     start_color();
 
     init_pair(1, COLOR_GREEN, COLOR_BLACK);
-    init_pair(2, COLOR_YELLOW, COLOR_GREEN);
 
     for (int i = 0; i < length; i++) {
         if (i == 0) {
