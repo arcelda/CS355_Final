@@ -230,7 +230,7 @@ void show_start_screen() {
         "Use the arrow keys to move the snake.",
         "Collect trophies (numbers) to grow. Win by growing to half the perimeter of the map!",
         "Avoid the walls and yourself.",
-        "Trophies disappear if not collected in time.",
+        "Trophies respawn if not 'eaten' in time.",
         "Don't try to reverse direction!",
         "",
         "Press any key to start and once the game starts press 'Q' to quit"
