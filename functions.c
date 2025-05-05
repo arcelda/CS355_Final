@@ -228,7 +228,7 @@ void show_start_screen() {
     char *title = "WELCOME TO TERMINAL SNAKE!";
     char *instructions[] = {
         "Use the arrow keys to move the snake.",
-        "Collect trophies (numbers) to grow.",
+        "Collect trophies (numbers) to grow. Win by growing to half the perimeter of the map!",
         "Avoid the walls and yourself.",
         "Trophies disappear if not collected in time.",
         "Don't try to reverse direction!",
